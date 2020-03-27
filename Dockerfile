@@ -18,6 +18,7 @@ RUN \
           xterm \
           unzip \
           git \
+          dbus \
           libgconf-2-4 \
           libpython2.7 \
           libnss3 \
