@@ -1,15 +1,17 @@
 FROM ubuntu18
 LABEL maintainer "ittou <VYG07066@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
-ENV CCS_VER=10.0.0.00010
-ARG URIS=smb://192.168.103.223/Share/CCS${CCS_VER}/
-ARG CCS_MAIN=CCS10.0.0.00010_linux-x64.tar.gz
+ARG CCS_VER=10.0.0.00010
+ARG IP=192.168.0.200
+ARG URIS=smb://${IP}/Share/CCS${CCS_VER}/
+ARG CCS_MAIN=CCS${CCS_VER}_linux-x64.tar.gz
 RUN \
   apt-get update && \
   apt-get -y -qq --no-install-recommends install sudo && \
   apt-get -y -qq --no-install-recommends install \
           locales && locale-gen en_US.UTF-8 && \
   apt-get -y -qq --no-install-recommends install \
+          notification-daemon \
           software-properties-common \
           build-essential \
           binutils \

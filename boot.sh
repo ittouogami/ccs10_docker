@@ -11,5 +11,7 @@ docker run -it --rm \
     --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     -v /sys:/sys:ro \
+    --tmpfs /run \
+    --tmpfs /run/lock \
     -w $HOME \
     ccs10
