@@ -1,10 +1,10 @@
 FROM ubuntu18
 LABEL maintainer "ittou <VYG07066@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
-ARG CCS_VER=10.0.0.00010
-ARG IP=192.168.0.200
+ARG CCS_VER
+ARG CCS_MAIN
+ARG IP
 ARG URIS=smb://${IP}/Share/CCS${CCS_VER}/
-ARG CCS_MAIN=CCS${CCS_VER}_linux-x64.tar.gz
 RUN \
   apt-get update && \
   apt-get -y -qq --no-install-recommends install sudo && \
@@ -13,14 +13,11 @@ RUN \
   apt-get -y -qq --no-install-recommends install \
           notification-daemon \
           software-properties-common \
-          build-essential \
           binutils \
           usbutils \
           net-tools \
           xterm \
           unzip \
-          git \
-          dbus \
           libgconf-2-4 \
           libpython2.7 \
           libnss3 \
@@ -43,5 +40,5 @@ RUN \
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["/bin/bash", "-l"]
+CMD ["/bin/bash"]
 
